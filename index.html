@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casino</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="header">
+    <div class="container">
+        <nav>
+            <img src="images/logo.png" alt="logo">
+            <ul>
+                <li><a href="#" id="playButton">Play</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<!-- Counter display -->
+<div id="counter" class="hidden">1.00</div>
+
+<script src="script.js"></script>
+<script>
+    document.getElementById('playButton').addEventListener('click', function(event) {
+        event.preventDefault();
+        startCounter();
+    });
+</script>
+</body>
+</html>
