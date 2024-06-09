@@ -1,31 +1,63 @@
-let counter = 1.0;
-let counterInterval;
+let isCrashed = false;
+let isPlaying = false;
 
-function startCounter() {
-    counter = 1.0;
-    clearInterval(counterInterval);
+let crashCounter = 1.0;
+const crashCounterInterval = 75;
+const crashCounterIncrement = 0.01;
+let crashRange = Math.random() * (2 - 1) + 1;
+let countdownInterval;
+let crashInterval;
 
-    const stopValue = Math.random() * (3 - 1) + 1;
-    // console.log('Counter will stop at:', stopValue.toFixed(2)); // USED FOR DEBUGGING AND TESTING
+function gameCountDown() {
+    let gameCooldown = 5; // Countdown
 
-    const counterElement = document.getElementById('counter');
-    counterElement.style.color = 'green';
-    counterElement.textContent = counter.toFixed(2);
-    counterElement.classList.remove('hidden');
+    document.getElementById("gameStartupCounter").innerHTML = gameCooldown.toFixed(1);
 
-    counterInterval = setInterval(() => updateCounter(stopValue), 100);
-}
-
-function updateCounter(stopValue) {
-    const counterElement = document.getElementById('counter');
-    counterElement.textContent = counter.toFixed(2); // Adjust toFixed() as needed
-
-    counter += 0.01;
-
-    if (counter >= stopValue) {
-        clearInterval(counterInterval);
-        counter = stopValue;
-        counterElement.style.color = 'red';
-        console.log('Stopped at:', counter.toFixed(2));
+    if (isPlaying === false) {
+        countdownInterval = setInterval(() => {
+            gameCooldown -= 0.1;
+            document.getElementById("gameStartupCounter").innerHTML = gameCooldown.toFixed(1);
+            if (gameCooldown <= 0) {
+                clearInterval(countdownInterval);
+                document.getElementById("gameStartupCounter").innerHTML = "GO!";
+                document.getElementById("counter").style.color = "#40a578";
+                isPlaying = true;
+                startGame();
+            }
+        }, 100);
     }
 }
+
+function updateCrashCounter() {
+    const counterElement = document.getElementById("counter");
+    counterElement.textContent = crashCounter.toFixed(2);
+
+    if (crashCounter >= crashRange) {
+        clearInterval(crashInterval);
+        isCrashed = true;
+        isPlaying = false;
+        console.log("Crashed");
+        document.getElementById("counter").style.color = "red";
+
+        // 3 Second Wait Before Restart
+        document.getElementById("gameStartupCounter").innerHTML = "Crashed!";
+        setTimeout(() => {
+            crashCounter = 1.0;
+            gameCountDown();
+        }, 3000);
+    } else {
+        crashCounter += crashCounterIncrement;
+    }
+}
+
+function startGame() {
+    if (isPlaying) {
+        console.log("Game starting...");
+        crashRange = Math.random() * (2 - 1) + 1;
+        console.log(`New crash range: ${crashRange.toFixed(2)}`);
+        crashInterval = setInterval(updateCrashCounter, crashCounterInterval);
+    }
+}
+
+// Start the game for the first time
+gameCountDown();
