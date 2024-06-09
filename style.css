@@ -1,78 +1,128 @@
 * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
 }
 
 body {
-    background: #222831;
-    color: #EEEEEE;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    flex-direction: column;
+  background: #222831;
+  color: #eeeeee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.gamestartup-time {
+  font-size: 1rem;
+  color: #eeeeee;
+  font-weight: 600;
+}
+
+#gameStartupCounter {
+  font-size: 1.5rem;
+  color: #ff5722;
+  font-weight: 600;
 }
 
 #header {
-    width: 100%;
-    height: 100vh;
-    background-size: cover;
-    background-position: center;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
+.footer {
+  color: #eeeeee;
+  text-align: left;
+  position: relative;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-item {
+  margin: 0 20px;
 }
 
 .container {
-    padding: 30px 50px;
-    text-align: center;
+  padding: 30px 50px;
+  text-align: center;
 }
 
 .logo {
-    width: 200px;
+  width: 200px;
 }
 
 nav ul li {
-    display: inline-block;
-    list-style: none;
-    margin: 10px 20px;
+  display: inline-block;
+  list-style: none;
+  margin: 10px 20px;
 }
 
 nav ul li a {
-    color: #EEEEEE;
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: 500;
-    position: relative;
+  color: #eeeeee;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 500;
+  position: relative;
 }
 
 nav ul li a::after {
-    content: '';
-    width: 0;
-    height: 3px;
-    background: #FF5722;
-    position: absolute;
-    left: 0;
-    bottom: 0px;
-    transition: 0.3s;
+  content: "";
+  width: 0;
+  height: 3px;
+  background: #ff5722;
+  position: absolute;
+  left: 0;
+  bottom: 0px;
+  transition: 0.3s;
 }
 
 nav ul li a:hover::after {
-    width: 100%;
+  width: 100%;
 }
 
 .header-text {
-    font-size: 30px;
+  font-size: 30px;
 }
 
 #counter {
-    position: fixed;
-    justify-content: center;
-    height: auto;
-    font-size: 3rem;
-    color: green;
-    margin-top: 5px;
+  content: "";
+  display: flex;
+  position: fixed;
+  font-size: 3rem;
+  color: #40a578;
+  top: 20%;
+  font-size: 7rem;
 }
 
-.hidden {
-    display: none;
+#balance {
+  color: #eeeeee;
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.bet-container {
+  margin: 10px 0;
+  text-align: center;
+}
+
+.bet-container input {
+  width: 50%;
+  padding: 5px;
+  font-size: 1rem;
+  margin: 5px 0;
+  color-scheme: dark;
+  border-radius: 10px;
+  border-style: solid;
+}
+
+.bet-container input:focus {
+  outline: none;
 }
