@@ -1,32 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Casino</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<div id="header">
-    <div class="container">
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="header">
+      <div class="container">
         <nav>
-            <img src="images/logo.png" alt="logo">
-            <ul>
-                <li><a href="#" id="playButton">Play</a></li>
-            </ul>
+          <img src="images/logo.png" alt="logo" />
+          <ul>
+            <li><a href="#" id="resetButton">Reset Balance</a></li>
+          </ul>
         </nav>
+      </div>
     </div>
-</div>
 
-<!-- Counter display -->
-<div id="counter" class="hidden">1.00</div>
+    <!--- Game Startup Timer --->
+    <div id="gameStartup" class="gamestartup-time">
+      <div class="container">
+        <div class="gameStartup-content">
+          <h1>Game Status</h1>
+          <div id="gameStartupCounter"></div>
+          <script>
+            gameCountDown();
+          </script>
+        </div>
+      </div>
+    </div>
 
-<script src="script.js"></script>
-<script>
-    document.getElementById('playButton').addEventListener('click', function(event) {
-        event.preventDefault();
-        startCounter();
-    });
-</script>
-</body>
+    <!--- Bet amount input --->
+    <div class="bet-container">
+      <div class="container">
+        <input
+          type="number"
+          id="betAmount"
+          name="betAmount"
+          min="1"
+          step="0.01"
+          placeholder="Bet Amount"
+        />
+      </div>
+    </div>
+
+    <!--- Footer display --->
+    <div class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-item">
+            <h3>Balance</h3>
+            <p id="balance"></p>
+            <script></script>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Counter display -->
+    <div id="counter" class="hidden">1.00</div>
+
+    <script src="script.js"></script>
+    <script>
+      startGame();
+    </script>
+  </body>
 </html>
